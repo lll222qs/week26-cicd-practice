@@ -1,0 +1,37 @@
+name: Python CI # 流水线的名字，随便起
+
+# 1. 触发条件：当 main 分支有 push 操作时触发
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+# 2. 定义工作任务
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest # 在 GitHub 提供的最新 Ubuntu 虚拟机上运行
+
+    steps:
+      # 步骤一：把代码下载下来
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 步骤二：设置 Python 环境 (假设你的项目是 Python)
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9' # 根据你的项目版本修改
+
+      # 步骤三：安装依赖
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # 步骤四：运行测试 (这是 CI 的核心，防止坏代码上线)
+      - name: Run tests
+        run: |
+          # 这里替换成你实际的测试命令，比如 pytest
+          echo "Running tests..."
+          # pytest tests/
