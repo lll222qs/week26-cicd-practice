@@ -1,0 +1,19 @@
+repos:
+  # 1. 检查代码格式 (类似 flake8，但更现代)
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+
+  # 2. 自动整理 import 顺序 (让代码更整洁)
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+
+  # 3. 自动格式化代码 (类似 Black)
+  - repo: https://github.com/psf/black
+    rev: 24.2.0
+    hooks:
+      - id: black
+        language_version: python3
