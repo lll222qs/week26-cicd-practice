@@ -1,0 +1,28 @@
+repos:
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        args: [--max-line-length=88]  # 和 black 保持一致
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: ["--profile", "black"]  # 让 isort 兼容 black 的风格
+
+  - repo: https://github.com/psf/black
+    rev: 24.10.0  # 建议用较新稳定版
+    hooks:
+      - id: black
+        language_version: python3
+
+  # pytest 钩子（保持不变）
+  - repo: local
+    hooks:
+      - id: pytest-check
+        name: pytest
+        entry: pytest
+        language: system
+        pass_filenames: false
+        always_run: true
