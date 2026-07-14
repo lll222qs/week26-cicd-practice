@@ -1,11 +1,24 @@
-# 忽略特定的大文件夹
-k8s-microservice-demo/
-k8s-backup-file/
+# 1. Python 缓存与虚拟环境 (绝对不要上传)
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
 
-# 忽略系统生成的文件
+# 2. 操作系统生成的文件
 .DS_Store
 Thumbs.db
 
-# 忽略 Python 缓存
-__pycache__/
-*.pyc
+# 3. IDE 配置文件 (VS Code 的 .vscode 文件夹通常不上传，除非你想共享团队配置)
+.vscode/
+
+# 4. 其他项目的干扰项 (根据你截图左侧看到的)
+# 如果这些文件在 minimal-demo 文件夹外面，其实 git add . 不会包含它们
+# 但如果它们在内部，请加上：
+k8s-microservice-demo/
+k8s-backup-file/
+calculator.py
+pyproject.toml
+
+# 5. 测试相关 (可选，CI 运行时可能会重新生成)
+.pytest_cache/

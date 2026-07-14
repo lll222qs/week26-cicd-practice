@@ -1,3 +1,4 @@
+
 # hello-deploy.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -30,4 +31,3 @@ spec:
   ports:
     - protocol: TCP
       port: 80      # Service 的端口
-      targetPort: 8000 # 容器的端口
